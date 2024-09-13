@@ -1,0 +1,90 @@
+// Cree una clase llamada Date que incluya tres datos como miembros de la clase: month(de tipo int), day (de tipo int int) y year (de tipo int). 
+// Su clase debe tener un constructor con tres parametros que utilice los parametros para inicializar los datos miembro de la clase. 
+// Para fines de este ejercicio, suponga que los valores proporcionados para year y day son correctos, pero asegurese de que el valor de month este en el rango de 1 a 12; si no es ası, establezca month en 1. 
+// Proporcione las funciones de acceso y modificacion para cada miembro de datos (setters y getters). Proporcione una funcion miembro displayDate que muestre el mes, dıa y ano separados por barras diagonales (/). 
+// Escriba la funcion principal donde cree dos objetos de tipo date, uno con el mes valido y otro con el mes invalido, imprima los valores de ambos objetos.
+
+
+
+// Date.h
+
+#include <iostream>
+using namespace std;
+
+class Date {
+public:
+  
+    explicit Date(int d, int m, int y) {
+        setYear(y);
+        setMonth(m);
+        setDay(d);
+    }
+
+    // Getters
+    int getDay() const {
+        return day;
+    }
+
+    int getMonth() const {
+        return month;
+    }
+
+    int getYear() const {
+        return year;
+    }
+
+    // Setters
+    void setDay(int d) {
+        if (d >= 1 && d <= 31) { 
+            day = d;
+        } else {
+            day = 1; 
+        }
+    }
+
+    void setMonth(int m) {
+        if (m >= 1 && m <= 12) {
+            month = m;
+        } else {
+            month = 1; 
+        }
+    }
+
+    void setYear(int y) {
+        if (y >= 1900 && y <= 2050) {
+            year = y;
+        } else {
+            year = 1900; 
+        }
+    }
+
+    // Función para mostrar la fecha
+    void displayDate() const {
+        cout << day << "/" << month << "/" << year << endl;
+    }
+
+private:
+    int day{1};
+    int month{1};
+    int year{1900};
+};
+
+
+
+
+// Main.cpp
+
+#include <iostream>
+#include "Date.h"
+
+using namespace std;
+
+int main() {
+    Date d1{0, 1, 2020};
+    Date d2{15, 14, 2019};
+
+    d1.displayDate();
+    d2.displayDate();
+
+    return 0;
+}

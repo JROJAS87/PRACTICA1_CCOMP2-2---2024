@@ -1,0 +1,32 @@
+// Implemente un programa que solicite un n´ umero n e imprima todos los n´ umeros primos menores a n.
+
+#include <iostream>
+using namespace std;
+
+
+bool esPrimo(int num) {
+    if (num < 2) return false;  // Los números menores que 2 no son primos
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) {
+            return false;  // Si se encuentra un divisor, no es primo
+        }
+    }
+    return true;
+}
+
+int main() {
+    int n;
+    cout << "Ingresa un número entero: ";
+    cin >> n;
+
+    cout << "Números primos menores a " << n << ":" << endl;
+
+    for (int i = 2; i < n; i++) {
+        if (esPrimo(i)) {
+            cout << i << " ";
+        }
+    }
+
+    cout << endl;
+    return 0;
+}
